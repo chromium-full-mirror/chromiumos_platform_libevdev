@@ -6,7 +6,7 @@ include common.mk
 
 LIBDIR ?= /usr/lib
 
-all: CC_LIBRARY(src/libevdev.so.0) CC_LIBRARY(src/libevdev_hollow.so.0)
+all: CC_LIBRARY(src/libevdev.so.0)
 clean: CLEAN(src/libevdev.so.0) CLEAN(src/libevdev_hollow.so.0)
 install: install-lib install-header
 
