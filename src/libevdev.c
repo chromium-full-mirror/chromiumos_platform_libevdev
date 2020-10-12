@@ -568,6 +568,7 @@ static const char* EvdevClassToString(EvdevClass cls) {
     case EvdevClassTablet:      return "EvdevClassTablet";
     case EvdevClassTouchpad:    return "EvdevClassTouchpad";
     case EvdevClassTouchscreen: return "EvdevClassTouchscreen";
+    case EvdevClassPointingStick: return "EvdevClassPointingStick";
   }
   return "Unhandled Evdev Class";
 }

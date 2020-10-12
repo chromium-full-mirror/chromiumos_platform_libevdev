@@ -34,6 +34,8 @@ enum EvdevClass_ {
   EvdevClassTablet,
   EvdevClassTouchpad,
   EvdevClassTouchscreen,
+  EvdevClassPointingStick,  /* A stick or keyboard dot used to move the cursor,
+                             * such as a TrackPoint. */
 };
 typedef enum EvdevClass_ EvdevClass, *EvdevClassPtr;
 
