@@ -524,6 +524,8 @@ static EvdevClass EvdevProbeClass(EvdevInfoPtr info) {
     if (TestBit(ABS_MT_POSITION_X, info->abs_bitmask) &&
         TestBit(ABS_MT_POSITION_Y, info->abs_bitmask))
       return EvdevClassMultitouchMouse;
+    else if (TestBit(INPUT_PROP_POINTING_STICK, info->prop_bitmask))
+      return EvdevClassPointingStick;
     else
       return EvdevClassMouse;
   }
