@@ -4,7 +4,7 @@
 
 include common.mk
 
-install-header: CC_LIBRARY(src/libevdev.so.0)
+install-header: CC_LIBRARY(src/libevdev-cros.so.0)
 	set -e; \
 	for h in libevdev.h libevdev_event.h libevdev_mt.h libevdev_log.h; do \
 		install -D -m 0644 $(SRC)/include/libevdev/$$h \

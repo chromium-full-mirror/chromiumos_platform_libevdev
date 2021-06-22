@@ -7,4 +7,4 @@ Name: libevdev-cros
 Description: The libevdev library (ChromeOS version)
 Version: 0
 Cflags: -I${includedir}
-Libs: -L${libdir} -levdev
+Libs: -L${libdir} -levdev-cros

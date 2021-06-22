@@ -5,23 +5,28 @@ include common.mk
 
 CFLAGS += -std=gnu99 -fvisibility=default
 CPPFLAGS += -I$(SRC)/include
+SONAME=libevdev-cros.so.0
+SONAME_HOLLOW=libevdev_hollow.so.0
 
-CC_LIBRARY(src/libevdev_hollow.so.0): CFLAGS += -DEVDEV_HOLLOW
-CC_LIBRARY(src/libevdev_hollow.so.0): src/libevdev.o \
+CC_LIBRARY(src/$(SONAME_HOLLOW)): CPPFLAGS += -DEVDEV_HOLLOW
+CC_LIBRARY(src/$(SONAME_HOLLOW)): LDFLAGS += -Wl,-soname,$(SONAME_HOLLOW)
+CC_LIBRARY(src/$(SONAME_HOLLOW)): src/libevdev.o \
 	src/libevdev_mt.o \
 	src/libevdev_event.o
 
-CC_LIBRARY(src/libevdev.so.0): src/libevdev.o \
+CC_LIBRARY(src/$(SONAME)): LDFLAGS += -Wl,-soname,$(SONAME)
+CC_LIBRARY(src/$(SONAME)): src/libevdev.o \
 	src/libevdev_mt.o \
 	src/libevdev_event.o
 
-install-lib: CC_LIBRARY(src/libevdev.so.0)
-	install -D -m 0755 src/libevdev.so.0 $(DESTDIR)$(LIBDIR)/libevdev.so.0
-	ln -f -s libevdev.so.0 $(DESTDIR)$(LIBDIR)/libevdev.so
+install-lib: CC_LIBRARY(src/$(SONAME))
+	install -D -m 0755 src/$(SONAME) \
+			$(DESTDIR)$(LIBDIR)/$(SONAME)
+	ln -f -s $(SONAME) $(DESTDIR)$(LIBDIR)/libevdev-cros.so
 	install -D -m 0644 $(SRC)/libevdev-cros.pc \
 			$(DESTDIR)$(LIBDIR)/pkgconfig/libevdev-cros.pc
 
 setup-lib-in-place:
 	mkdir -p $(SRC)/in-place || true
-	ln -sf $(SRC)/src/libevdev_hollow.so.0 $(SRC)/in-place/libevdev.so
-	ln -sf $(SRC)/src/libevdev_hollow.so.0 $(SRC)/in-place/libevdev.so.0
+	ln -sf $(SRC)/src/$(SONAME_HOLLOW) $(SRC)/in-place/libevdev-cros.so
+	ln -sf $(SRC)/src/$(SONAME_HOLLOW) $(SRC)/in-place/libevdev-cros.so.0
