@@ -1,4 +1,4 @@
-# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+# Copyright 2012 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 include common.mk
@@ -9,7 +9,7 @@ SONAME=libevdev-cros.so.0
 SONAME_HOLLOW=libevdev_hollow.so.0
 
 CC_LIBRARY(src/$(SONAME_HOLLOW)): CPPFLAGS += -DEVDEV_HOLLOW
-CC_LIBRARY(src/$(SONAME_HOLLOW)): LDFLAGS += -Wl,-soname,$(SONAME_HOLLOW)
+CC_LIBRARY(src/$(SONAME_HOLLOW)): LDFLAGS += -Wl,-soname,$(SONAME)
 CC_LIBRARY(src/$(SONAME_HOLLOW)): src/libevdev.o \
 	src/libevdev_mt.o \
 	src/libevdev_event.o
