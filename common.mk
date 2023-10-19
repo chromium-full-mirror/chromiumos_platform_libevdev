@@ -1,4 +1,4 @@
-# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+# Copyright 2012 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -282,7 +282,6 @@ COMMON_CFLAGS-clang := -fstack-protector-all -fvisibility=hidden -ggdb
 COMMON_CFLAGS := -Wall -Werror -fno-strict-aliasing -O1 -Wformat=2
 CXXFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CXXDRIVER))
 CFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CDRIVER))
-CPPFLAGS += -D_FORTIFY_SOURCE=3
 
 
 ifeq ($(MODE),opt)
