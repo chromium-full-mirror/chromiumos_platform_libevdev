@@ -9,6 +9,10 @@
 #  The authoritative common.mk is located in:
 #    https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/common-mk
 #  Please make all changes there, then copy into place in other repos.
+#
+#  The copybara service is used to automatically sync updates for projects
+#  hosted on Chromium GoB hosts.  Please see:
+#  //google3/third_party/copybara-gsubtreed/chromiumos_platform2/copy.bara.sky
 # NOTE NOTE NOTE
 #
 # This file provides a common architecture for building C/C++ source trees.
@@ -323,7 +327,7 @@ COMMON_CFLAGS := -Wall -Wunused -Wno-unused-parameter -Wunreachable-code \
   -Wint-in-bool-context -Wfree-nonheap-object \
   -Werror -Wformat=2 -fno-strict-aliasing  \
   $(SSP_CFLAGS) -O1
-CXXFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CXXDRIVER)) -std=gnu++20 \
+CXXFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CXXDRIVER)) -std=gnu++23 \
   -fvisibility-inlines-hidden
 CFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CDRIVER)) -std=gnu17
 # We undefine _FORTIFY_SOURCE because some distros enable it by default in
