@@ -117,6 +117,9 @@ MTB_Init(EvdevPtr cmt, int min, int max, int current)
     evstate->slot_min = min;
     evstate->slot_count = max - min + 1;
 
+    if (evstate->slot_count > MAX_SLOT_COUNT)
+        evstate->slot_count = MAX_SLOT_COUNT;
+
     evstate->slots = calloc(sizeof(MtSlotRec), evstate->slot_count);
     if (evstate->slots == NULL)
         return ENOMEM;
